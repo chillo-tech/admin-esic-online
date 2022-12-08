@@ -27,7 +27,7 @@ jobs:
 
 
   copy-configs:
-    name: "copy configs"
+    name: "copy docker-compose configs"
     runs-on: ubuntu-latest
     needs: create-folder
     steps:
