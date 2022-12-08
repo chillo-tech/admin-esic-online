@@ -5,6 +5,7 @@ module.exports = ({ env }) => ({
     client: 'postgres',
     connection: {
       host: 'strapiDB',
+      port: env.int('DATABASE_PORT', 5432),
       user: 'postgres',
       password: 'postgres',
       database: 'db-esic-online'
