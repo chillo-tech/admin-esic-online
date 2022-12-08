@@ -14,9 +14,6 @@ services:
     volumes:
       - ./config:/opt/app/config
       - ./src:/opt/app/src
-      - ./package.json:/opt/package.json
-      - ./yarn.lock:/opt/yarn.lock
-      - ./package-lock.json:/opt/packag-lock.json
       - ./public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
