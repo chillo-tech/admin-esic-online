@@ -32,6 +32,11 @@ jobs:
     needs: create-folder
     steps:
       - uses: actions/checkout@master
+      - name: update configs
+        run: |
+         sed -i 's|IMAGE_NAME|simachille/admin-esic-online:${{ github.ref_name }}-${{ github.sha }}|' docker-compose.yml
+
+      - uses: actions/checkout@master
       - 
         name: copy file via ssh password
         uses: appleboy/scp-action@master
@@ -67,7 +72,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: simachille/admin-esic-online:latest
+          tags: simachille/admin-esic-online:${{ github.ref_name }}-${{ github.sha }}
   
 
   run-container:
