@@ -9,16 +9,16 @@ services:
     restart: unless-stopped
     #env_file: .env
     environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_CLIENT: postgres
       DATABASE_HOST: 'admin-esic-online-db'
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      NODE_ENV: ${NODE_ENV}
+      DATABASE_PORT: 25432
+      DATABASE_NAME: admin-esic-online
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      JWT_SECRET: lfea7JXxC9HzoUcPvhfF0Q==
+      ADMIN_JWT_SECRET: HDJtZpu2VRhXB3JI58tTHw==
+      APP_KEYS: XLUBaVnH/9ZbGiMC0cOmAg==,pqqSeV5NVBfQ3KqurUoHfA==,lmkEIdShRIr+OrpmVvVLIQ==,UE7kgoV/RxR9qeu14zkzYg==
+      NODE_ENV: development
     volumes:
       - /opt/applications/esic/admin-esic-online/config:/opt/app/config
       - /opt/applications/esic/admin-esic-online/src:/opt/app/src
@@ -37,12 +37,11 @@ services:
     container_name: admin-esic-online-db
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
-    env_file: .env
     image: postgres:12.0-alpine
     environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: admin-esic-online
     volumes:
       - strapi-data:/var/lib/postgresql/data/ #using a volume
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
