@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
   connection: {
     client: 'postgres',
     connection: {
-      port: 25432,
+      port: 5432,
       user: 'postgres',
       password: 'postgres',
       database: 'db-esic-online'
