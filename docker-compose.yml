@@ -8,17 +8,17 @@ services:
     image: IMAGE_NAME
     restart: unless-stopped
     #env_file: .env
-    # environment:
-    #   DATABASE_CLIENT: postgres
-    #   DATABASE_HOST: 'admin-esic-online-db'
-    #   DATABASE_PORT: 25432
-    #   DATABASE_NAME: admin-esic-online
-    #   DATABASE_USERNAME: postgres
-    #   DATABASE_PASSWORD: postgres
-    #   JWT_SECRET: lfea7JXxC9HzoUcPvhfF0Q==
-    #   ADMIN_JWT_SECRET: HDJtZpu2VRhXB3JI58tTHw==
-    #   APP_KEYS: XLUBaVnH/9ZbGiMC0cOmAg==,pqqSeV5NVBfQ3KqurUoHfA==,lmkEIdShRIr+OrpmVvVLIQ==,UE7kgoV/RxR9qeu14zkzYg==
-    #   NODE_ENV: development
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: 'admin-esic-online-db'
+      DATABASE_PORT: 25432
+      DATABASE_NAME: admin-esic-online
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      JWT_SECRET: lfea7JXxC9HzoUcPvhfF0Q==
+      ADMIN_JWT_SECRET: HDJtZpu2VRhXB3JI58tTHw==
+      APP_KEYS: XLUBaVnH/9ZbGiMC0cOmAg==,pqqSeV5NVBfQ3KqurUoHfA==,lmkEIdShRIr+OrpmVvVLIQ==,UE7kgoV/RxR9qeu14zkzYg==
+      NODE_ENV: development
     volumes:
       - /opt/applications/esic/admin-esic-online/config:/opt/app/config
       - /opt/applications/esic/admin-esic-online/src:/opt/app/src

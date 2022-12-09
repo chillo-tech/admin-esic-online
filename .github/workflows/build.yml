@@ -69,6 +69,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
+          file: Dockerfile.prod
           push: true
           tags: simachille/admin-esic-online:deploiement-${{ github.sha }}
   
