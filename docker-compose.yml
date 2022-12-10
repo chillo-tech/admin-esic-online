@@ -1,0 +1,52 @@
+version: '3'
+services:
+  admin-esic-online:
+    container_name: admin-esic-online
+    image: IMAGE_NAME
+    restart: unless-stopped
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: admin-esic-onlineDB
+      DATABASE_NAME: admin-esic-online
+      DATABASE_USERNAME: postgres
+      DATABASE_PORT: 5432
+      #JWT_SECRET: ${JWT_SECRET}
+      #ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      DATABASE_PASSWORD: postgres
+      NODE_ENV: production
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - '1337:1337'
+    networks:
+      - admin-esic-online
+    depends_on:
+      - admin-esic-onlineDB
+      
+  admin-esic-onlineDB:
+    container_name: admin-esic-onlineDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    image: postgres:14.5-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: admin-esic-online
+    volumes:
+      - admin-esic-online-data:/var/lib/postgresql/data/ #using a volume
+      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+
+    ports:
+      - '5432:5432'
+    networks:
+      - admin-esic-online
+
+volumes:
+  admin-esic-online-data:
+
+networks:
+  admin-esic-online:
+    name: Admin-esic-online
+    driver: bridge
